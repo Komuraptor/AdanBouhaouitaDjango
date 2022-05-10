@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark text-center">
+    <a class="navbar-brand" href="">StudyGyaan</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Regi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Django Tutorial</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <form action = "" method = "post"> {% csrf_token %}
+        <h3 class = "mb-4"> Iniciar Sesión </h3>
+        {% if form.non_field_errors %}
+        <p style = "color: red"> Error en credenciales. </p>
+        {% endif %}
+        <p>
+            <input type="text" name="username" autofocus required id = "id_username" class = "form-control"/>
+        </p>
+        <p>
+            <input type="password" name="password" required id = "id_password" class = "form-control"/>
+        </p>
+        <p>
+            <input type="submit" class="btn btn-primary btn-block" value="Acceder">
+        </p>
+    </form>
+    <p>
+        <input type="submit" class="btn btn-primary btn-block" value="Registrarse">
+    </p>
+</div>
+{% endblock %}

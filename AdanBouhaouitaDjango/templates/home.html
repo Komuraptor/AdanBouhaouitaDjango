@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark text-center">
+    <a class="navbar-brand" href="">
+        <a class="navbar-brand text-white" href="{% url 'logout' %}">Log Out</a>
+        <a class="navbar-brand text-white">
+            {% if user.is_authenticated %}
+            Bienvenido {{ user.username }}!
+            {% else %}</a>
+    </a>
+    
+</nav>
+  <p>No has iniciado sesión</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
