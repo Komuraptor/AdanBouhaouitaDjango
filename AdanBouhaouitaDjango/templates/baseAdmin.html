@@ -17,10 +17,19 @@
   </head>
   <body>
     {% if user.is_authenticated %}
-    <main>
-      {% block content %}
-      {% endblock %}
-    </main>
+      {% if request.user.is_superuser %}
+      <main>
+        {% block content %}
+        {% endblock %}
+      </main>
+      {% else %}
+      <div class="container" style="padding-top: 20%; width:30%">
+        <form>
+            <p align="center">No deberias estar aquí, vuelve atrás.</p>
+            <a href="{% url 'home' %}" class="btn btn-primary btn-block">Volver</a>
+        </form>
+      </div>
+      {% endif %}
     {% else %}
     <div class="container" style="padding-top: 20%; width:30%">
       <form>

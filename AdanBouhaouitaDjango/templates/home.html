@@ -3,17 +3,20 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark text-center">
-    <a class="navbar-brand" href="">
-        <a class="navbar-brand text-white" href="{% url 'logout' %}" onclick="return confirm('¿Cerrar sesión');">Log Out</a>
-        <a class="navbar-brand text-white">
-            {% if user.is_authenticated %}
-            Bienvenido {{ user.username }}!
-            {% else %}</a>
+<nav class="navbar bg-dark navbar-dark text-center">
+    <a class="navbar-brand text-white" href="{% url 'logout' %}" onclick="return confirm('¿Cerrar sesión?');">Log Out</a>
+    <a align="right" class="navbar-brand text-white">
+        ¡Bienvenido {{ user.username }}!
     </a>
-    
 </nav>
-  <p>No has iniciado sesión</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
+<div class="container" style="padding-top: 20%; width:30%">
+    {% if request.user.is_superuser %}
+    <p>
+        <a class="btn btn-primary btn-block" href="/medico">Medicos</a>
+    </p>
+    {% else %}
+        
+    {% endif %}
+    
+</div>
 {% endblock %}

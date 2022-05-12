@@ -1,16 +1,29 @@
 from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 
 # Create your models here.
 class Medico(models.Model):
+    med_familia = 'Médico de familia'
+    digestivo = 'Digestivo'
+    neurologo = 'Neurologo'
+    dermatologo = 'Dermatólogo'
+    traumatologo = 'Traumatólogo'
+    ESPECIALIDADES = (
+        (med_familia, 'Médico de familia'),
+        (digestivo, 'Digestivo'),
+        (neurologo, 'Neurologo'),
+        (dermatologo, 'Dermatólogo'),
+        (traumatologo, 'Traumatólogo')
+    )
+
     nombre = models.CharField(max_length=30)
     apellidos = models.CharField(max_length=50)
-    edad = models.IntegerField(max_length=11)
-    fechaalta = models.DateField
-    especialidad = models.CharField(max_length=40)
+    edad = models.CharField(max_length=2)
+    fechaalta = models.DateTimeField(auto_now_add = True)
+    especialidad = models.CharField(max_length=25, choices = ESPECIALIDADES, default=med_familia)
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
 
@@ -18,47 +31,57 @@ class Medico(models.Model):
         return self.nombre
 
 class Paciente(models.Model):
-    nombre = models.CharField(max_length=30, blank = True)
-    apellidos = models.CharField(max_length=50, blank = True)
-    edad = models.IntegerField(max_length=11)
-    direccion = models.CharField(max_length=100, blank = True)
-    foto = models.CharField(max_length=100, blank = True)
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=30, null = True)
+    apellidos = models.CharField(max_length=50, null = True)
+    edad = models.CharField(max_length=2, null = True)
+    direccion = models.CharField(max_length=100, null = True)
+    foto = models.ImageField(upload_to='imagenes/', null = True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.nombre
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Paciente.objects.create(user = instance)
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Paciente.objects.create(user = instance)
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.Paciente.save()
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.paciente.save()
+
+@receiver(pre_save, sender=User)
+def set_new_user_inactive(sender, instance, **kwargs):
+    if instance._state.adding is True:
+        instance.is_active = False
 
 class Cita(models.Model):
     idPaciente = models.ForeignKey(Paciente, on_delete=CASCADE)
     idMedico = models.ForeignKey(Medico, on_delete=CASCADE)
-    fecha = models.DateField
+    fecha = models.DateField()
     observaciones = models.CharField(max_length=200)
 
     def __str__(self):
         return self.fecha
 
 class Medicamento(models.Model):
+    s = 'Con receta'
+    n = 'Venta libre'
+    TIPO_RECETA = (
+        (s, 'Con receta'),
+        (n, 'Venta libre')
+    )
+
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
-    receta = models.CharField(max_length=1)
-    precio = models.FloatField
-    stock = models.IntegerField(max_length=11)
+    receta = models.CharField(max_length=1, choices=TIPO_RECETA)
+    precio = models.CharField(max_length=10)
+    stock = models.CharField(max_length=10)
 
     def __str__(self):
         return self.nombre
 
 class Compra(models.Model):
-    fecha = models.DateField
-    precio = models.FloatField
+    fecha = models.DateField()
+    precio = models.CharField(max_length=10)
     idPaciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     def __str__(self):

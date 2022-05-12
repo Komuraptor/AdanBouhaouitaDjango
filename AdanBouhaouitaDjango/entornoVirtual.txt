@@ -2,17 +2,28 @@
 # $ conda create --name <env> --file <this file>
 # platform: win-64
 @EXPLICIT
-https://conda.anaconda.org/anaconda/win-64/ca-certificates-2022.3.29-haa95532_1.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/ca-certificates-2022.4.26-haa95532_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/win-64/vs2015_runtime-14.27.29016-h5e58377_2.conda
 https://repo.anaconda.com/pkgs/main/win-64/vc-14.2-h21ff451_1.conda
+https://conda.anaconda.org/anaconda/win-64/jpeg-9e-h2bbff1b_0.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/libwebp-1.2.2-h2bbff1b_0.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/lz4-c-1.9.3-h2bbff1b_1.tar.bz2
 https://conda.anaconda.org/anaconda/win-64/openssl-1.1.1n-h2bbff1b_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/win-64/sqlite-3.38.2-h2bbff1b_0.conda
+https://conda.anaconda.org/anaconda/win-64/tk-8.6.11-h2bbff1b_0.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/xz-5.2.5-h62dcd97_0.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/zlib-1.2.11-vc14h1cdd9ab_1.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/libpng-1.6.37-h2a8f88b_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/win-64/python-3.7.13-h6244533_0.conda
+https://conda.anaconda.org/anaconda/win-64/zstd-1.4.5-h04227a9_0.tar.bz2
 https://conda.anaconda.org/anaconda/win-64/certifi-2021.10.8-py37haa95532_2.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/freetype-2.10.4-hd328e21_0.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/libtiff-4.2.0-hd0e1b90_0.tar.bz2
 https://conda.anaconda.org/anaconda/noarch/pytz-2021.3-pyhd3eb1b0_0.tar.bz2
 https://conda.anaconda.org/anaconda/noarch/sqlparse-0.4.1-py_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/wheel-0.37.1-pyhd3eb1b0_0.conda
 https://repo.anaconda.com/pkgs/main/win-64/wincertstore-0.2-py37haa95532_2.conda
 https://conda.anaconda.org/anaconda/win-64/django-2.2.5-py37_1.tar.bz2
+https://conda.anaconda.org/anaconda/win-64/pillow-9.0.1-py37hdc2b20a_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/win-64/setuptools-61.2.0-py37haa95532_0.conda
 https://repo.anaconda.com/pkgs/main/win-64/pip-21.2.4-py37haa95532_0.conda

@@ -1,12 +1,33 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Login</title>
 
-{% block title %}Sign Up{% endblock %}
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-{% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
-{% endblock %}
+      <link rel='icon' href='img/favicon.ico' type='image/x-icon' sizes="16x16" />
+
+      <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <nav class="navbar bg-dark navbar-dark text-center">
+      <a class="navbar-brand text-white" >Consultas Seguros - Registro</a>
+    </nav>
+    <div class="container" style="padding-top: 10%; width:40%">
+      <h2>Registro</h2>
+      <form method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary btn-block" type="submit">Registrarse</button>
+        
+      </form>
+      <p style="padding-top: 3%">
+        <a class="btn btn-danger btn-block" href="/accounts/login">Cancelar</a>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'baseAdmin.html' %}
+{% block content %}
+<nav class="navbar bg-dark navbar-dark text-center">
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+    <a align="right" class="navbar-brand text-white" >
+        {% if user.is_authenticated %}
+        Usuario: {{ user.username }}
+        {% endif %} - Consultas Seguros</a>
+</nav>
+{% if messages %}
+  <ul class="messages list-group mb-3">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div align="right" class="btn_crear mb-3" style="padding: 1%">
+    <a href="crear" type="button" class="btn btn-primary">Crear</a>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Edad</th>
+        <th>Fecha Alta</th>
+        <th>Especialidad</th>
+        <th>Nombre Usuario</th>
+        <th>Contraseña</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for medico in object_list %}
+            <tr>
+                <td> {{ medico.nombre }} </td>
+                <td> {{ medico.apellidos }} </td>
+                <td> {{ medico.edad }} </td>
+                <td> {{ medico.fechaalta }} </td>
+                <td> {{ medico.especialidad }} </td>
+                <td> {{ medico.username }} </td>
+                <td> {{ medico.password }} </td>
+                <td>
+                    <form method="POST" action="eliminar/{{medico.id}}">
+                        {% csrf_token %}
+                        <div class="btn-group">
+                            <a href="editar/{{medico.id}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                            <button class="btn btn-danger" onclick="return confirm('¿Eliminar registro?');" type="submit">
+                            Eliminar
+                            </button>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

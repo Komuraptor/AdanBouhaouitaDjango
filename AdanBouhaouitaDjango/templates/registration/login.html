@@ -1,27 +1,44 @@
-{% extends 'base.html' %}
-{% block content %}
-<nav class="navbar bg-dark navbar-dark text-center">
-    <a class="navbar-brand text-white" >Consultas Seguros</a>
-    
-</nav>
-<div class="container" style="padding-top: 10%; width:40%">
-    <form action = "" method = "post"> {% csrf_token %}
-        <h3 class = "mb-4"> Iniciar Sesión </h3>
-        {% if form.non_field_errors %}
-        <p style = "color: red"> Error en credenciales. </p>
-        {% endif %}
-        <p>
-            <input type="text" name="username" autofocus required id = "id_username" class = "form-control"/>
-        </p>
-        <p>
-            <input type="password" name="password" required id = "id_password" class = "form-control"/>
-        </p>
-        <p>
-            <input type="submit" class="btn btn-primary btn-block" value="Acceder">
-        </p>
-    </form>
-    <p>
-        <a class="btn btn-primary btn-block" href="/accounts/signup"> Registrarse</a>
-    </p>
-</div>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <link rel='icon' href='img/favicon.ico' type='image/x-icon' sizes="16x16" />
+
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+    <body>
+        <nav class="navbar bg-dark navbar-dark text-center">
+            <a class="navbar-brand text-white" >Consultas Seguros</a>
+            
+        </nav>
+        <div class="container" style="padding-top: 10%; width:40%">
+            <form action = "" method = "post"> {% csrf_token %}
+                <h3 class = "mb-4"> Iniciar Sesión </h3>
+                {% if form.non_field_errors %}
+                <p style = "color: red"> Error en credenciales. </p>
+                {% endif %}
+                <p>
+                    <input type="text" name="username" autofocus required id = "id_username" class = "form-control"/>
+                </p>
+                <p>
+                    <input type="password" name="password" required id = "id_password" class = "form-control"/>
+                </p>
+                <p>
+                    <input type="submit" class="btn btn-primary btn-block" value="Acceder">
+                </p>
+            </form>
+            <p>
+                <a class="btn btn-primary btn-block" href="/accounts/signup"> Registrarse</a>
+            </p>
+        </div>
+    </body>
+</html>
