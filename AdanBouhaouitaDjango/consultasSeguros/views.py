@@ -78,6 +78,9 @@ class MedicamentoEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'Medicamento eliminado'
         messages.success(self.request, (success_message))
         return reverse('medicamento')
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 # Create your views here.

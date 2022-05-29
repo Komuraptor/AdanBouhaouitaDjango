@@ -48,7 +48,10 @@ class Cita(models.Model):
 
 class Medicamento(models.Model):
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
     s = 's'
     n = 'v'
     TIPO_RECETA = (
