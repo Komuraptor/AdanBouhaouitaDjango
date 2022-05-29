@@ -24,4 +24,9 @@ urlpatterns = [
     path("accounts/", include("registration.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+<<<<<<< Updated upstream
+=======
+    path('medico/', include("consultasSeguros.urls")),
+    path('medicamento/', include("consultasSeguros.urlsStock")),
+>>>>>>> Stashed changes
 ]

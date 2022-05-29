@@ -47,6 +47,16 @@ class Cita(models.Model):
         return self.fecha
 
 class Medicamento(models.Model):
+<<<<<<< Updated upstream
+=======
+    s = 's'
+    n = 'v'
+    TIPO_RECETA = (
+        (s, 'Con receta'),
+        (n, 'Venta libre')
+    )
+
+>>>>>>> Stashed changes
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
     receta = models.CharField(max_length=1)
