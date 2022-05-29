@@ -1,6 +1,4 @@
 from django.shortcuts import render
-<<<<<<< Updated upstream
-=======
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -78,9 +76,6 @@ class MedicamentoEliminar(SuccessMessageMixin, DeleteView):
         success_message = 'Medicamento eliminado'
         messages.success(self.request, (success_message))
         return reverse('medicamento')
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 
 # Create your views here.
