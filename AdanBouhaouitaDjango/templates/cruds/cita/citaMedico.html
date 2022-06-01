@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar bg-dark navbar-dark text-center">
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+    <a align="right" class="navbar-brand text-white" >
+        {% if user.is_authenticated %}
+        Usuario: {{ user.username }}
+        {% endif %} - Consultas Seguros</a>
+</nav>
+{% if messages %}
+  <ul class="messages list-group mb-3">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<!-- <form method="GET">
+    {{ filter.form }}
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form> -->
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID Paciente</th>
+        <th>Fecha</th>
+        <th>Observaciones</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for cita in object_list %}
+            <tr>
+                <td> {{ cita.idPaciente }} </td>
+                <td> {{ cita.fecha }} </td>
+                <td> {{ cita.observaciones }} </td>
+                <td>
+                    <form method="POST" action="eliminar/{{cita.id}}">
+                        {% csrf_token %}
+                        <div class="btn-group">
+                            <a href="editar/{{cita.id}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

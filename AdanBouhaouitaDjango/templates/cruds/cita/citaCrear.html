@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar bg-dark navbar-dark text-center">
+    <a href="../" type="submit" class="btn btn-primary">Volver</a>
+    <a align="right" class="navbar-brand text-white" >
+        {% if user.is_authenticated %}
+        Usuario: {{ user.username }}
+        {% endif %} - Consultas Seguros</a>
+</nav>
+<div class="container" style="padding-top: 10%; width:40%">
+    <form method="post" class="btn-block">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+        <a href="./" type="submit" class="btn btn-danger btn-block">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

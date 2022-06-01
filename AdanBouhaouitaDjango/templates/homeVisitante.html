@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>{% block title %}Titulo{% endblock %}</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+      <link rel='icon' href='img/favicon.ico' type='image/x-icon' sizes="16x16" />
+
+      <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <main>
+      <nav class="navbar bg-dark navbar-dark text-center">
+          <a href="/accounts/login" type="submit" class="btn btn-primary">Volver</a>
+          <a align="right" class="navbar-brand text-white" >Visitante - Consultas Seguros</a>
+      </nav>
+      <div class="container" style="padding-top: 10%; width:30%">
+        <h1 class="text-center">¡Bienvenido!</h1>
+        <p>Para poder acceder a todas las funciones de la página debería registrarse primero. 
+          Mientras tanto podrá consultar a los profesionales que tenemos a nuestra disposición en el enlace a continuación.</p>
+        <p>
+            <a class="btn btn-primary btn-block" href="medicoVisitante">Médicos</a>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
